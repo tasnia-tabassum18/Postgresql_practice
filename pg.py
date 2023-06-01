@@ -110,3 +110,28 @@ def insert_data():
     conn.close()
 
 insert_data()
+def show_data():
+    conn = psycopg2.connect(
+        host="localhost",
+        port="5432",
+        database="employee",
+        user="postgres",
+        password="oishee"
+    )
+
+    cursor = conn.cursor()
+
+    query ="SELECT * FROM employee_t" 
+
+    cursor.execute(query)
+    results = cursor.fetchall()
+    for row in results:
+        print(row)
+
+
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+show_data()
